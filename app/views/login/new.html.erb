@@ -10,10 +10,15 @@
 
       <div class="form-group">
         <%= f.label :password %><br>
-        <%= f.password_field :password, :class => "form-control", :placeholder => "Username"%>
+        <%= f.password_field :password, :class => "form-control", :placeholder => "password"%>
       </div>
 
-      <%= f.submit :class => 'btn btn-default pull-right', :value => "Sign in" %>
+      <div class="form-group">
+        <%= f.label :password_confirmation %><br>
+        <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Retype Password"%>
+      </div>
+
+      <%= f.submit :class => 'btn btn-default pull-right', :value => "Submit" %>
     <% end %>
   </div>
     

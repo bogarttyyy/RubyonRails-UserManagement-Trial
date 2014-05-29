@@ -1,8 +1,24 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
+  # devise_for :users
+  # devise_for :logins
+  # get 'user_sessions/new'
+
+  # get 'user_sessions/create'
+
+  # get 'user_sessions/destroy'
+
   get 'home/index'
 
-  resources :login
+  get "log_out" => "sessions#destroy", :as => "log_out"
+  get "log_in" => "sessions#new", :as => "log_in"
+  get "sign_up" => "login#new", :as => "sign_up"
+  root :to => "login#new"
 
+  # resources :users
+  resources :sessions
+  resources :login
   resources :role
 
   # The priority is based upon order of creation: first created -> highest priority.

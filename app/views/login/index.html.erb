@@ -1,20 +1,25 @@
 <div class="container">
   <div class="login-form">
+    <h1>List of users</h1>
     <table class="table table-bordered">
       <tr>
-        <th>User ID</th>
-        <th>Username</th>
-        <th>Password</th>
+        <th class="text-center">User ID</th>
+        <th class="text-center">Username</th>
+        <th class="text-center">Password</th>
         <th>Roles</th>
       </tr>
       <% @login.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
-        <td><%= user.username %></td>
-        <td><%= user.password%></td>
-        <td></td>
+        <td class="col-lg-1 text-center"><%= user.id %></td>
+        <td class="col-lg-2 text-center"><%= user.username %></td>
+        <td class="col-lg-2 text-center"><%= user.password%></td>
+        <td class="col-lg-7"></td>
       </tr>
       <% end %>
     </table>
+
+    <%= link_to 'Add new roles', new_role_path, :class => 'btn btn-default' %>
+    <%= link_to 'Register!', new_login_path, :class => 'btn btn-default' %>
+    
   </div>
 </div>
