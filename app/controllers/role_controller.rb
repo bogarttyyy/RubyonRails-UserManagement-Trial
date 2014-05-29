@@ -18,6 +18,12 @@ class RoleController < ApplicationController
 	def show
 		@role = Role.find(params[:id])
 	end
+	def destroy
+		@role = Role.find(params[:id])
+		@role.destroy
+
+		redirect_to login_path(:id => user.id)
+	end
 
 	private
 		def role_params

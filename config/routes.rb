@@ -14,7 +14,8 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "login#new", :as => "sign_up"
-  root :to => "login#new"
+  
+  root :to => "sessions#new"
 
   # resources :users
   resources :sessions
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'home#login'
+  # root 'sessions#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

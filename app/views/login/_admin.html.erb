@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="login-form">
+    <h1>List of users</h1>
+    <table class="table table-bordered">
+      <tr>
+        <th class="text-center">User ID</th>
+        <th class="text-center">Username</th>
+        <th class="text-center">Add Role</th>
+        <th>Roles</th>
+      </tr>
+      <% @login.each do |user| %>
+      <tr>
+        <td class="col-lg-1 text-center"><%= user.id %></td>
+        <td class="col-lg-2 text-center"><%= user.username %></td>
+        <td class="col-lg-2 text-center"><%= user.password%></td>
+        <td class="col-lg-7"></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <h1>List of roles</h1>
+    <table class="table table-bordered col-lg-4">
+      <tr>
+        <th>ID</th>
+        <th>Roles</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <% @role.each do |role| %>
+      <tr>
+        <td class="col-lg-3 text-center"><%= role.id %></td>
+        <td class="col-lg-3 text-center"><%= role.roletype %></td>
+        <td class="col-lg-3"><%= link_to 'Edit' %></td>
+        <td class="col-lg-3"><%= link_to 'Delete' %></td>
+      </tr>
+      <% end %>
+    </table>
+
+    <%= link_to 'Add new roles', new_role_path, :class => 'btn btn-default' %>
+    <%= link_to 'Register new user', new_login_path, :class => 'btn btn-default' %>
+    <%= link_to "Log out", log_out_path, :class => 'btn btn-danger pull-right'  %>
+    
+  </div>
+</div>
