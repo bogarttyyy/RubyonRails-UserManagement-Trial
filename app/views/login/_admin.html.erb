@@ -1,44 +1,65 @@
 <div class="container">
   <div class="login-form">
-    <h1>List of users</h1>
-    <table class="table table-bordered">
-      <tr>
-        <th class="text-center">User ID</th>
-        <th class="text-center">Username</th>
-        <th class="text-center">Add Role</th>
-        <th>Roles</th>
-      </tr>
-      <% @login.each do |user| %>
-      <tr>
-        <td class="col-lg-1 text-center"><%= user.id %></td>
-        <td class="col-lg-2 text-center"><%= user.username %></td>
-        <td class="col-lg-2 text-center"><%= user.password%></td>
-        <td class="col-lg-7"></td>
-      </tr>
-      <% end %>
-    </table>
+    <div class="col-lg-8">
+      <h1>List of users</h1>
+    </div>
+    <div class="col-lg-offset-1 col-lg-3">
+      <!-- <%= link_to 'Add new roles', new_role_path, :class => 'btn btn-default' %> -->
 
-    <h1>List of roles</h1>
-    <table class="table table-bordered col-lg-4">
-      <tr>
-        <th>ID</th>
-        <th>Roles</th>
-        <th></th>
-        <th></th>
-      </tr>
-      <% @role.each do |role| %>
-      <tr>
-        <td class="col-lg-3 text-center"><%= role.id %></td>
-        <td class="col-lg-3 text-center"><%= role.roletype %></td>
-        <td class="col-lg-3"><%= link_to 'Edit' %></td>
-        <td class="col-lg-3"><%= link_to 'Delete' %></td>
-      </tr>
-      <% end %>
-    </table>
+      <%= link_to 'Register new user', new_login_path, :class => 'btn btn-default' %>
+      <%= link_to "Log out", log_out_path, :class => 'btn btn-danger'  %>
+    </div>
+    <div class="col-lg-12">
+      <table class="table table-bordered">
+        <tr>
+          <th class="text-center">User ID</th>
+          <th class="text-center">Username</th>
+          <th class="text-center">Add Role</th>
+          <th>Roles</th>
+        </tr>
+        <% @login.each do |user| %>
+        <tr>
+          <td class="col-lg-1 text-center"><%= user.id %></td>
+          <td class="col-lg-2 text-center"><%= user.username %></td>
+          <td class="col-lg-2 text-center"><%= user.password%></td>
+          <td class="col-lg-7"></td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
 
-    <%= link_to 'Add new roles', new_role_path, :class => 'btn btn-default' %>
-    <%= link_to 'Register new user', new_login_path, :class => 'btn btn-default' %>
-    <%= link_to "Log out", log_out_path, :class => 'btn btn-danger pull-right'  %>
-    
+    <div class="col-lg-6">
+      <h1>List of roles</h1>
+      <table class="table table-bordered col-lg-4">
+        <tr>
+          <th>ID</th>
+          <th>Roles</th>
+          <th></th>
+          <th></th>
+        </tr>
+        <% @role.each do |role| %>
+        <tr>
+          <td class="col-lg-3 text-center"><%= role.id %></td>
+          <td class="col-lg-3 text-center"><%= role.roletype %></td>
+          <td class="col-lg-3 text-center"><%= link_to 'Edit', edit_role_path(role.id), :class => "btn btn-warning" %></td>
+          <td class="col-lg-3 text-center"><%= link_to 'Delete', role_path(role.id), method: :delete, data: {confirm: 'Are you sure?'}, :class => "btn btn-danger" %></td>
+        </tr>
+        <% end %>
+        <tr>
+          <td class="text-center"><strong>Add Role</strong></td>
+
+          <%= form_for :role, url: save_role_path do |f| %>  
+            <td colspan="2">
+              <input class="form-control block" id"role_roletype" name="role[roletype]" placeholer="Enter new role..." type="text" >
+            </td>
+            <td class="text-center">
+              <%= f.submit :class => 'btn btn-success', :value => "Save" %>
+            </td>
+          <% end %>
+
+          
+        </tr>
+      </table>
+    </div>   
   </div>
 </div>

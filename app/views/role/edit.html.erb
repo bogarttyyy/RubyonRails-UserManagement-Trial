@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-xs-12 col-lg-4 col-lg-offset-4 login-form">
+    <h1 class="text-center">Add New Role</h1>
+    <%= form_for :role, :html => {:class => 'form-horizontal'}, url: role_path, method: :patch  do |f| %>
+      <% if @role.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@role.errors.count, "error") %> prohibited
+            this role from being saved:</h2>
+          <ul>
+          <% @role.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+          </ul>
+        </div>
+        <% end %>
+      <div class="form-group">
+        <%= f.label :roletype %><br>
+        <%= f.text_field :roletype, :class => "form-control", :placeholder => "Enter new role..." %>
+      </div>
+      <%= link_to "Back", login_path(current_user.id), :class => 'btn btn-default'  %>
+      <%= f.submit :class => 'btn btn-default pull-right', :value => "Submit" %>
+    <% end %>
+  </div>
+    
+</div>

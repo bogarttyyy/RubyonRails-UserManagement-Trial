@@ -1,3 +1,5 @@
 class Role < ActiveRecord::Base
-	has_and_belongs_to_many :logins
+	# has_and_belongs_to_many :logins
+
+	validates_presence_of :roletype
 end
