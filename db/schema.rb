@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140529111758) do
+ActiveRecord::Schema.define(version: 20140529173832) do
 
   create_table "logins", force: true do |t|
     t.string   "username"
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20140529111758) do
     t.datetime "updated_at"
     t.string   "password_hash"
     t.string   "password_salt"
+  end
+
+  create_table "logins_roles", id: false, force: true do |t|
+    t.integer "login_id"
+    t.integer "role_id"
   end
 
   create_table "roles", force: true do |t|

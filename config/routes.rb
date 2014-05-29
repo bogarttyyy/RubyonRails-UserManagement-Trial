@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "login#new", :as => "sign_up"
   post "save_role" => "role#save", :as => "save_role"
+  get "assign_role/:id" => "login#assign", :as => "assign_role"
 
   root :to => "sessions#new"
 

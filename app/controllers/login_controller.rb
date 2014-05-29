@@ -22,8 +22,13 @@ class LoginController < ApplicationController
 		# render plain: params[:login].inspect
 		@login = Login.new(login_params)
 
-		@login.save
-		redirect_to log_in_path
+		if @login.save
+			redirect_to log_in_path
+			session[:user_id] = nil
+		else
+			render 'create'
+		end
+		
 	end
 
 	def show

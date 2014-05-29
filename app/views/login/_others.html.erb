@@ -7,15 +7,14 @@
 			<tr>
 				<th>User ID</th>
 				<th>Username</th>
-				<th>Password</th>
 				<th>Roles</th>
 			</tr>
 			<tr>
-				<td><%= @login.id %></td>
-				<td><%= @login.username %></td>
-				<td><%= @login.password%></td>
-				<td></td>
+				<td class="col-lg-2"><%= @login.id %></td>
+				<td class="col-lg-2"><%= @login.username %></td>
+				<td class="col-lg-8"></td>
 			</tr>
 		</table>
+		<%= link_to "Logout", log_out_path, :class => 'btn btn-danger'  %>
 	</div>
 </div>
