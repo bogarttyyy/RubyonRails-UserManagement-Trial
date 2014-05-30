@@ -38,6 +38,7 @@ class LoginController < ApplicationController
 				@role = Role.all
 			else
 				@login = Login.find(current_user.id)
+				# @role = Login.roles.find(current_user.id)
 			end
 		else
 			session[:user_id] = nil

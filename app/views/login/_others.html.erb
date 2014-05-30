@@ -12,7 +12,13 @@
 			<tr>
 				<td class="col-lg-2"><%= @login.id %></td>
 				<td class="col-lg-2"><%= @login.username %></td>
-				<td class="col-lg-8"></td>
+				<td class="col-lg-8">
+					<% @login.roles.each do |role| %>
+						<span class="label label-info custom-label">
+							<%= role.roletype %>
+						</span>
+					<% end %>
+				</td>
 			</tr>
 		</table>
 		<%= link_to "Logout", log_out_path, :class => 'btn btn-danger'  %>
