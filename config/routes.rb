@@ -14,15 +14,18 @@ Rails.application.routes.draw do
   get "log_out" => "sessions#destroy", :as => "log_out"
   get "log_in" => "sessions#new", :as => "log_in"
   get "sign_up" => "login#new", :as => "sign_up"
-  post "save_role" => "role#save", :as => "save_role"
-  get "assign_role/:id" => "login#assign", :as => "assign_role"
+  get "assign_role/:id" => "login_role#create", :as => "assign_role"
+  get "role_view/:id" => "login_role#index", :as => "role_view"
 
+  get "update_role/:id" => "login_role#update", :as => "update_role"
+  post "save_role" => "role#save", :as => "save_role"
   root :to => "sessions#new"
 
   # resources :users
   resources :sessions
   resources :login
   resources :role
+  resources :login_role
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

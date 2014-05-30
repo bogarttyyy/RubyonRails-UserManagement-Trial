@@ -40,9 +40,9 @@ class LoginController < ApplicationController
 				@login = Login.find(current_user.id)
 			end
 		else
-			redirect_to log_in_path, :notice => "Please login properly1 #{id}"
+			session[:user_id] = nil
+			redirect_to log_in_path, :notice => "Please login properly"
 		end
-		
 	end
 
 	private

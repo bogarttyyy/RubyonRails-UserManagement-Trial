@@ -21,8 +21,20 @@
         <tr>
           <td class="col-lg-1 text-center"><%= user.id %></td>
           <td class="col-lg-2 text-center"><%= user.username %></td>
-          <td class="col-lg-2 text-center"><%= link_to 'Add new role', assign_role_path(user), :class => 'btn btn-default' %></td>
-          <td class="col-lg-7"></td>
+          <td class="col-lg-2 text-center">
+            <%= link_to 'Update roles', edit_login_role_path(user.id), :class => 'btn btn-default' %>
+          </td>
+          <td class="col-lg-7">
+            <p>
+              <% user.roles.each do |role| %>
+                <span class="label label-info custom-label">
+                  <%= role.roletype %>
+
+                  <!-- <button type="button" class="close custom-close" data-dismiss="alert" aria-hidden="true">&times;</button> -->
+                </span>
+              <% end %>
+            </p>
+          </td>
         </tr>
         <% end %>
       </table>
